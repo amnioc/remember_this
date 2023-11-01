@@ -8,7 +8,7 @@ const CategoryButtons = ({ categories, setCategories }) => {
     if (categories.includes(category)) {
       const index = categories.indexOf(category);
       categories.splice(index, 1);
-      setCategories(categories);
+      setCategories([...categories]);
       bgColor = "pink";
     } else if (!categories.includes(category)) {
       setCategories([...categories, `${category}`]);
