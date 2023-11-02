@@ -1,17 +1,19 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, Button } from "react-native";
-import firestore from "./firebaseConfig copy";
+import db from "./firebaseConfig copy";
 import Header from "./components/header/Header";
 import NewNote from "./features/newNote/NewNote";
 import React from "react";
 import { doc, setDoc } from "firebase/firestore";
+import NotesList from "./features/notesList/NotesList";
 
 export default function App() {
+  const [currentNotes, setCurrentNotes] = React.useState([]);
   const [text, setText] = React.useState("");
   const [categories, setCategories] = React.useState([]);
 
   async function writeNoteData(name, noteId, categories) {
-    const newNote = doc(firestore, "notes", noteId);
+    const newNote = doc(db, "notes", noteId);
     const data = {
       content: name,
       category: categories,
@@ -43,6 +45,10 @@ export default function App() {
           writeNoteData(`${text}`, `${new Date().getTime()}`, categories);
         }}
         accessibilityLabel="Save your Note using this purple button"
+      />
+      <NotesList
+        currentNotes={currentNotes}
+        setCurrentNotes={setCurrentNotes}
       />
 
       <StatusBar style="auto" />
