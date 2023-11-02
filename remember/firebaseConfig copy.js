@@ -4,6 +4,7 @@ const {
   Timestamp,
   FieldValue,
   Filter,
+  getDocs,
 } = require("firebase/firestore");
 
 const apiKEY = process.env.apiKey;
@@ -21,6 +22,6 @@ const firebaseApp = initializeApp({
   measurementId: "G-X6Y7BRZBZV",
 });
 
-const firestore = getFirestore();
+const db = getFirestore();
 
-export default firestore;
+export default db;
