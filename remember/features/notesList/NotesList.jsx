@@ -1,8 +1,8 @@
-import { Text, TouchableOpacity, View } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import db from "../../firebaseConfig copy.js";
 import { collection, getDocs } from "firebase/firestore";
-import FullNotesList from "./FullNotesList.jsx";
 import React from "react";
+import NoteCards from "../noteCard/NoteCards.jsx";
 
 const NotesList = ({ currentNotes, setCurrentNotes }) => {
   const [pressed, setPressed] = React.useState(false);
@@ -24,7 +24,7 @@ const NotesList = ({ currentNotes, setCurrentNotes }) => {
         <Text>Click For List</Text>
       </TouchableOpacity>
 
-      {pressed ? <FullNotesList currentNotes={currentNotes} /> : <Text></Text>}
+      {pressed ? <NoteCards currentNotes={currentNotes} /> : <Text></Text>}
     </View>
   );
 };

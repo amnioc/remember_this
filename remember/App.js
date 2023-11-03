@@ -34,6 +34,7 @@ export default function App() {
     <View style={styles.homepage}>
       <Header style={styles.header} />
       <NewNote
+        text={text}
         setText={setText}
         categories={categories}
         setCategories={setCategories}
@@ -69,6 +70,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "purple",
     flexDirection: "row",
-    borderColor: "pink",
   },
 });
