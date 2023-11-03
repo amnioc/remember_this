@@ -2,13 +2,14 @@ import React from "react";
 import { View, TextInput, StyleSheet, Text } from "react-native";
 import CategoryButtons from "../../components/noteCategories/CategoryButtons";
 
-const NewNote = ({ setText, categories, setCategories }) => {
+const NewNote = ({ text, setText, categories, setCategories }) => {
   return (
     <View>
       <TextInput
         style={styles.input}
         placeholder="I need to remember..."
         multiline={true}
+        value={text}
         onChangeText={(newText) => {
           setText(newText);
         }}

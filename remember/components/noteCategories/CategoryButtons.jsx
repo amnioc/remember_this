@@ -1,18 +1,28 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
+// let bgColor = "pink";
 const CategoryButtons = ({ categories, setCategories }) => {
-  const starterCategories = ["Work", "Hobbies", "Holiday", "Food", "Music"];
-  let bgColor = "pink";
+  const starterCategories = ["Work", "Hobbies", "Holiday", "Food", "Link"];
+  const [color, setColor] = useState("pink");
+
+  // let bgColor = "pink";
 
   const updateCategoryandColor = (category) => {
     if (categories.includes(category)) {
       const index = categories.indexOf(category);
       categories.splice(index, 1);
       setCategories([...categories]);
-      bgColor = "pink";
+      // setColor("pink");
     } else if (!categories.includes(category)) {
       setCategories([...categories, `${category}`]);
-      bgColor = "blue";
+      // setColor("blue");
     }
   };
 
@@ -20,15 +30,16 @@ const CategoryButtons = ({ categories, setCategories }) => {
     <View style={styles.categoryWrapper}>
       {starterCategories.map((category) => {
         return (
-          <TouchableOpacity
+          <TouchableHighlight
             key={`${category}`}
-            style={[styles.categoryChoice, { backgroundColor: `${bgColor}` }]}
+            style={[styles.categoryChoice, { backgroundColor: color }]}
+            underlayColor={"grey"}
             onPress={() => {
               updateCategoryandColor(`${category}`);
             }}
           >
             <Text>{`${category}`}</Text>
-          </TouchableOpacity>
+          </TouchableHighlight>
         );
       })}
     </View>
@@ -38,6 +49,10 @@ const CategoryButtons = ({ categories, setCategories }) => {
 const styles = StyleSheet.create({
   categoryWrapper: {
     borderColor: "blue",
+    position: "relative",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignContent: "center",
   },
 
   categoryChoice: {
@@ -46,7 +61,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     color: "black",
-    backgroundColor: "pink",
+    // backgroundColor: `${color}`,
   },
 });
 
