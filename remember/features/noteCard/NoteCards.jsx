@@ -1,11 +1,15 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 const NoteCards = ({ currentNotes }) => {
   return currentNotes.map((note) => {
     return (
       <View key={note.id} style={styles.noteCardContainer}>
-        <Text style={styles.mainContent}>
-          The Note: {note.content} Categories: {note.category}
+        <Text style={styles.noteText}>The Note: {note.content}</Text>
+        <Text style={styles.noteCategories}>
+          Categories: {note.category.join(", ") || "-"}
+        </Text>
+        <Text style={styles.noteDate}>
+          Created On: {note.date.slice(0, 15)}
         </Text>
       </View>
     );
@@ -14,19 +18,18 @@ const NoteCards = ({ currentNotes }) => {
 
 const styles = StyleSheet.create({
   noteCardContainer: {
-    flex: 1,
-    flexDirection: "row",
+    flex: 0.2,
     alignContent: "center",
-    position: "relative",
     backgroundColor: "light grey",
+    borderWidth: 10,
     borderColor: "blue",
     position: "relative",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignContent: "center",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
   },
-  mainContent: {
+  noteText: {
     // borderColor: "black",
   },
+  noteCategories: {},
 });
 export default NoteCards;
