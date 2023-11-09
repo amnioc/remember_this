@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 
 // let bgColor = "pink";
 const CategoryButtons = ({ categories, setCategories }) => {
@@ -30,7 +24,7 @@ const CategoryButtons = ({ categories, setCategories }) => {
     <View style={styles.categoryWrapper}>
       {starterCategories.map((category) => {
         return (
-          <TouchableHighlight
+          <Pressable
             key={`${category}`}
             style={[styles.categoryChoice, { backgroundColor: color }]}
             underlayColor={"grey"}
@@ -39,7 +33,7 @@ const CategoryButtons = ({ categories, setCategories }) => {
             }}
           >
             <Text>{`${category}`}</Text>
-          </TouchableHighlight>
+          </Pressable>
         );
       })}
     </View>
