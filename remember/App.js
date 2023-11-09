@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Button } from "react-native";
+import { StyleSheet, View, Button, ScrollView } from "react-native";
 import db from "./firebaseConfig copy";
 import Header from "./components/header/Header";
 import NewNote from "./features/newNote/NewNote";

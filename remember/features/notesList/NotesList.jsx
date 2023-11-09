@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import db from "../../firebaseConfig copy.js";
 import { collection, getDocs } from "firebase/firestore";
 import React from "react";
@@ -20,13 +20,43 @@ const NotesList = ({ currentNotes, setCurrentNotes }) => {
 
   return (
     <View>
-      <Pressable onPress={getAllNotes}>
-        <Text>Click For List</Text>
+      <Pressable onPress={getAllNotes} style={styles.showListButton}>
+        <Text styles={styles.showListTitle}>Click For List</Text>
       </Pressable>
 
-      {pressed ? <NoteCards currentNotes={currentNotes} /> : <Text></Text>}
+      {pressed ? (
+        <ScrollView style={styles.allNotesList}>
+          <NoteCards currentNotes={currentNotes} />
+        </ScrollView>
+      ) : (
+        <Text></Text>
+      )}
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  showListButton: {
+    position: "relative",
+    padding: 10,
+    color: "red",
+  },
+  showListTitle: {
+    marginTop: 16,
+    paddingVertical: 8,
+    borderWidth: 4,
+    borderColor: "#20232a",
+    borderRadius: 6,
+    backgroundColor: "#61dafb",
+    color: "#20232a",
+    textAlign: "center",
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  allNotesList: {
+    position: "relative",
+    padding: 10,
+  },
+});
 
 export default NotesList;
