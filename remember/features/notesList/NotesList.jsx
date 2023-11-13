@@ -1,21 +1,28 @@
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import db from "../../firebaseConfig copy.js";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  documentId,
+  getDocs,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import React from "react";
 import NoteCards from "../noteCard/NoteCards.jsx";
 
 const NotesList = ({ currentNotes, setCurrentNotes }) => {
   const [pressed, setPressed] = React.useState(false);
   async function getAllNotes() {
-    await getDocs(collection(db, "notes")).then((querySnapshot) => {
-      const newData = querySnapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setCurrentNotes(newData);
-      pressed ? setPressed(false) : setPressed(true);
-      //   console.log(currentNotes, newData);
+    const querySnapshot = await getDocs(
+      query(collection(db, "notes"), orderBy("id", "desc"))
+    );
+
+    const newData = querySnapshot.docs.map((doc) => {
+      return { id: doc.id, ...doc.data() };
     });
+    setCurrentNotes(newData);
+
+    pressed ? setPressed(false) : setPressed(true);
   }
 
   return (

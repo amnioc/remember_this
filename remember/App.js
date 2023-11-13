@@ -15,6 +15,7 @@ export default function App() {
   async function writeNoteData(name, noteId, categories) {
     const newNote = doc(db, "notes", noteId);
     const data = {
+      id: noteId,
       content: name,
       category: categories,
       date: `${new Date()}`,
