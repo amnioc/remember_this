@@ -15,7 +15,7 @@ const NewNote = ({ text, setText, categories, setCategories }) => {
         }}
       />
       <CategoryButtons setCategories={setCategories} categories={categories} />
-      <Text>Categories Chosen: {`${categories}`} </Text>
+      <Text>Categories Chosen: {`${categories.join(", ")}`} </Text>
     </View>
   );
 };
