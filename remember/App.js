@@ -5,11 +5,14 @@ import Header from "./components/header/Header";
 import NewNote from "./features/newNote/NewNote";
 import React from "react";
 import { doc, setDoc } from "firebase/firestore";
-import NotesList from "./features/notesList/NotesList";
+import NotesList from "./features/notesList/ShowNotesButton";
+import ShowNotesButton from "./features/notesList/ShowNotesButton";
 
 export default function App() {
   const [currentNotes, setCurrentNotes] = React.useState([]);
   const [text, setText] = React.useState("");
+  const [showNotes, setShowNotes] = React.useState(false);
+
   const [categories, setCategories] = React.useState([]);
 
   async function writeNoteData(name, noteId, categories) {
@@ -31,31 +34,50 @@ export default function App() {
       });
   }
 
-  return (
-    <View style={styles.homepage}>
-      <Header style={styles.header} />
-      <NewNote
-        text={text}
-        setText={setText}
-        categories={categories}
-        setCategories={setCategories}
-      />
-      <Button
-        title="Save Note"
-        color={"purple"}
-        onPress={() => {
-          writeNoteData(`${text}`, `${new Date().getTime()}`, categories);
-        }}
-        accessibilityLabel="Save your Note using this purple button"
-      />
-      <NotesList
-        currentNotes={currentNotes}
-        setCurrentNotes={setCurrentNotes}
-      />
+  if (showNotes === false) {
+    return (
+      <View style={styles.homepage}>
+        <Header style={styles.header} />
+        <NewNote
+          text={text}
+          setText={setText}
+          categories={categories}
+          setCategories={setCategories}
+        />
+        <Button
+          title="Save Note"
+          color={"purple"}
+          onPress={() => {
+            writeNoteData(`${text}`, `${new Date().getTime()}`, categories);
+          }}
+          accessibilityLabel="Save your Note using this purple button"
+        />
+        <ShowNotesButton
+          setShowNotes={setShowNotes}
+          showNotes={showNotes}
+          currentNotes={currentNotes}
+          setCurrentNotes={setCurrentNotes}
+        />
 
-      <StatusBar style="auto" />
-    </View>
-  );
+        <StatusBar style="auto" />
+      </View>
+    );
+  } else {
+    return (
+      <View style={styles.homepage}>
+        <Header style={styles.header} />
+
+        <ShowNotesButton
+          setShowNotes={setShowNotes}
+          showNotes={showNotes}
+          currentNotes={currentNotes}
+          setCurrentNotes={setCurrentNotes}
+        />
+
+        <StatusBar style="auto" />
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
