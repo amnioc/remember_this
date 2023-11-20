@@ -6,7 +6,7 @@ import Header from "../../components/header/Header";
 const HomePage = ({ notes, setNotes, showNotes, setShowNotes }) => {
   return (
     <View style={styles.homepage}>
-      <Header style={styles.header} />
+      <Header />
       <NewNote />
       <ShowNotesButton
         setShowNotes={setShowNotes}
@@ -26,12 +26,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-evenly",
     borderColor: "pink",
-  },
-  header: {
-    height: 55,
-    alignItems: "center",
-    backgroundColor: "purple",
-    flexDirection: "row",
   },
 });
 

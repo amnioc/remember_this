@@ -21,7 +21,7 @@ const ShowNotesButton = ({ notes, setNotes, setShowNotes, showNotes }) => {
   return (
     <View>
       <Pressable onPress={getAllNotes} style={styles.showListButton}>
-        <Text styles={styles.showListTitle}>
+        <Text styles={styles.buttonText}>
           {showNotes ? "Return To Home" : "Click For List"}
         </Text>
       </Pressable>
@@ -35,8 +35,12 @@ const styles = StyleSheet.create({
   showListButton: {
     position: "relative",
     padding: 20,
-    margin: 20,
-    color: "red",
+    margin: 50,
+    alignItems: "center",
+    backgroundColor: "aquamarine",
+  },
+  buttonText: {
+    color: "white",
   },
 });
 
