@@ -1,5 +1,5 @@
 import { ScrollView, StyleSheet, View } from "react-native";
-import NoteCards from "../../features/noteCard/NoteCards";
+import NoteCards from "../noteCard/NoteCards";
 
 const ViewNotes = ({ notes }) => {
   return (
