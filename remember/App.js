@@ -4,7 +4,7 @@ import HomePage from "./views/homepage/HomePage";
 import NotesPage from "./views/viewNotes/NotesPage";
 
 export default function App() {
-  const [currentNotes, setCurrentNotes] = React.useState([]);
+  const [notes, setNotes] = React.useState([]);
   const [text, setText] = React.useState("");
   const [showNotes, setShowNotes] = React.useState(false);
 
@@ -19,8 +19,8 @@ export default function App() {
         setCategories={setCategories}
         showNotes={showNotes}
         setShowNotes={setShowNotes}
-        currentNotes={currentNotes}
-        setCurrentNotes={setCurrentNotes}
+        notes={notes}
+        setNotes={setNotes}
       />
     );
   } else {
@@ -28,8 +28,8 @@ export default function App() {
       <NotesPage
         showNotes={showNotes}
         setShowNotes={setShowNotes}
-        currentNotes={currentNotes}
-        setCurrentNotes={setCurrentNotes}
+        notes={notes}
+        setNotes={setNotes}
       />
     );
   }

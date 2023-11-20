@@ -3,12 +3,7 @@ import { ScrollView, StyleSheet, View } from "react-native";
 import ShowNotesButton from "../../features/notesList/ShowNotesButton";
 import Header from "../../components/header/Header";
 
-const NotesPage = ({
-  showNotes,
-  setShowNotes,
-  currentNotes,
-  setCurrentNotes,
-}) => {
+const NotesPage = ({ showNotes, setShowNotes, notes, setNotes }) => {
   return (
     <ScrollView style={styles.notesPage}>
       <Header style={styles.header} />
@@ -16,8 +11,8 @@ const NotesPage = ({
       <ShowNotesButton
         setShowNotes={setShowNotes}
         showNotes={showNotes}
-        currentNotes={currentNotes}
-        setCurrentNotes={setCurrentNotes}
+        notes={notes}
+        setNotes={setNotes}
       />
 
       <StatusBar style="auto" />

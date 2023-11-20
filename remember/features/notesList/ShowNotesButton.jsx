@@ -4,12 +4,7 @@ import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React from "react";
 import ViewNotes from "../../views/viewNotes/ViewNotes.jsx";
 
-const ShowNotesButton = ({
-  currentNotes,
-  setCurrentNotes,
-  setShowNotes,
-  showNotes,
-}) => {
+const ShowNotesButton = ({ notes, setNotes, setShowNotes, showNotes }) => {
   // const [showNotes, setShowNotes] = React.useState(false);
   async function getAllNotes() {
     const querySnapshot = await getDocs(
@@ -19,7 +14,7 @@ const ShowNotesButton = ({
     const newData = querySnapshot.docs.map((doc) => {
       return { id: doc.id, ...doc.data() };
     });
-    setCurrentNotes(newData);
+    setNotes(newData);
 
     showNotes ? setShowNotes(false) : setShowNotes(true);
   }
@@ -32,7 +27,7 @@ const ShowNotesButton = ({
         </Text>
       </Pressable>
 
-      {showNotes ? <ViewNotes currentNotes={currentNotes} /> : <Text></Text>}
+      {showNotes ? <ViewNotes notes={notes} /> : <Text></Text>}
     </View>
   );
 };

@@ -1,10 +1,10 @@
 import { ScrollView, StyleSheet, View } from "react-native";
 import NoteCards from "../../features/noteCard/NoteCards";
 
-const ViewNotes = ({ currentNotes }) => {
+const ViewNotes = ({ notes }) => {
   return (
     <ScrollView style={styles.allNotesList}>
-      <NoteCards currentNotes={currentNotes} />
+      <NoteCards notes={notes} />
     </ScrollView>
   );
 };
