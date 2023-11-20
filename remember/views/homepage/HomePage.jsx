@@ -8,8 +8,8 @@ import db from "../../firebaseConfig copy";
 const HomePage = ({
   text,
   setText,
-  currentNotes,
-  setCurrentNotes,
+  notes,
+  setNotes,
   categories,
   setCategories,
   showNotes,
@@ -54,8 +54,8 @@ const HomePage = ({
       <ShowNotesButton
         setShowNotes={setShowNotes}
         showNotes={showNotes}
-        currentNotes={currentNotes}
-        setCurrentNotes={setCurrentNotes}
+        notes={notes}
+        setNotes={setNotes}
       />
 
       <StatusBar style="auto" />

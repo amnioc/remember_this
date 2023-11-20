@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 
-const NoteCards = ({ currentNotes }) => {
-  return currentNotes.map((note) => {
+const NoteCards = ({ notes }) => {
+  return notes.map((note) => {
     return (
       <View key={note.id} style={styles.noteCardContainer}>
         <Text style={styles.noteText}>The Note: {note.content}</Text>
