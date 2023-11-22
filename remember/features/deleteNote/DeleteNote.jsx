@@ -1,10 +1,15 @@
 import { deleteDoc, doc } from "firebase/firestore";
 import { Text, Pressable, StyleSheet } from "react-native";
 import db from "../../firebaseConfig copy";
+import React from "react";
+import { optimisticDelete } from "../../helpers/helperFuncs";
 
-const DeleteNote = ({ note }) => {
+const DeleteNote = ({ note, notes, setNotes }) => {
+  // const [thisNote, setThisNote] = React.useState("")
   async function deleteNote(note) {
     const thisNote = doc(db, "notes", note);
+
+    setNotes(optimisticDelete(notes, note));
 
     await deleteDoc(thisNote)
       .then(() => {

@@ -26,7 +26,11 @@ const ShowNotesButton = ({ notes, setNotes, setShowNotes, showNotes }) => {
         </Text>
       </Pressable>
 
-      {showNotes ? <ViewNotes notes={notes} /> : <Text></Text>}
+      {showNotes ? (
+        <ViewNotes notes={notes} setNotes={setNotes} />
+      ) : (
+        <Text></Text>
+      )}
     </View>
   );
 };
