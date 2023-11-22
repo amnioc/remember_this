@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import DeleteNote from "../deleteNote/DeleteNote";
 
-const NoteCards = ({ notes }) => {
+const NoteCards = ({ notes, setNotes }) => {
   return notes.map((note) => {
     return (
       <View key={note.id} style={styles.noteCardContainer}>
@@ -12,7 +12,7 @@ const NoteCards = ({ notes }) => {
         <Text style={styles.noteDate}>
           Created On: {note.date.slice(0, 15)}
         </Text>
-        <DeleteNote note={note.id} />
+        <DeleteNote note={note.id} notes={notes} setNotes={setNotes} />
       </View>
     );
   });
