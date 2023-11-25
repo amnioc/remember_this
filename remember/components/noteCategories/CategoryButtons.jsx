@@ -4,9 +4,8 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 // let bgColor = "pink";
 const CategoryButtons = ({ categories, setCategories }) => {
   const starterCategories = ["Work", "Hobbies", "Holiday", "Food", "Link"];
-  const [color, setColor] = useState("pink");
 
-  // let bgColor = "pink";
+  const [color, setColor] = useState("pink");
 
   const updateCategoryandColor = (category) => {
     if (categories.includes(category)) {
