@@ -8,6 +8,7 @@ import {
   FlatList,
 } from "react-native";
 import starterCategories2 from "../../helpers/holders";
+import { filterResults } from "./searchFuncs";
 
 const SearchNotes = ({ notes, setNotes }) => {
   const [filter, setFilter] = React.useState({
@@ -16,9 +17,13 @@ const SearchNotes = ({ notes, setNotes }) => {
     text: "",
   });
 
-  function filterResults() {
-    return console.log("in here");
-  }
+  // function filterResults(filter, item) {
+  //   // console.log(filter);
+  //   filter.category.push(item.category);
+  //   console.log(filter);
+
+  //   return setFilter({ ...filter });
+  // }
 
   return (
     <SafeAreaView style={styles.searchMenu}>
@@ -29,7 +34,7 @@ const SearchNotes = ({ notes, setNotes }) => {
           <Pressable
             style={styles.categoryFilter}
             onPress={() => {
-              filterResults();
+              setFilter(filterResults(filter, item));
             }}
           >
             <Text style={styles.filterLabel}>{item.category}</Text>
