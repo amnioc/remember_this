@@ -1,6 +1,6 @@
 export function filterResults(filter, item) {
-  filter.category.push(item.category);
-  console.log(filter);
-
+  if (item) {
+    filter.category.push(item.category);
+  }
   return { ...filter };
 }
