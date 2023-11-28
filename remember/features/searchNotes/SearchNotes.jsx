@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import starterCategories2 from "../../helpers/holders";
 import { filterResults } from "./searchFuncs";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import db from "../../firebaseConfig copy";
 
 const SearchNotes = ({ notes, setNotes }) => {
   const [filter, setFilter] = React.useState({
@@ -17,13 +19,20 @@ const SearchNotes = ({ notes, setNotes }) => {
     text: "",
   });
 
-  // function filterResults(filter, item) {
-  //   // console.log(filter);
-  //   filter.category.push(item.category);
-  //   console.log(filter);
-
-  //   return setFilter({ ...filter });
-  // }
+  async function filterNotes(filter) {
+    console.log("here in filterNotes");
+    // const querySnapshot = await getDocs(
+    //   query(
+    //     collection(db, "notes"),
+    //     where("category", "array-contains", filter.category[0]),
+    //     orderBy("id", "desc")
+    //   )
+    // );
+    // const filteredNotes = querySnapshot.docs.map((doc) => {
+    //   return { id: doc.id, ...doc.data() };
+    // });
+    // return filteredNotes;
+  }
 
   return (
     <SafeAreaView style={styles.searchMenu}>
@@ -35,6 +44,7 @@ const SearchNotes = ({ notes, setNotes }) => {
             style={styles.categoryFilter}
             onPress={() => {
               setFilter(filterResults(filter, item));
+              setNotes(filterNotes(notes, filter));
             }}
           >
             <Text style={styles.filterLabel}>{item.category}</Text>
