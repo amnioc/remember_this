@@ -9,7 +9,6 @@ const ShowNotesButton = ({ notes, setNotes, setShowNotes, showNotes }) => {
     const querySnapshot = await getDocs(
       query(collection(db, "notes"), orderBy("id", "desc"))
     );
-
     const allNotes = querySnapshot.docs.map((doc) => {
       return { id: doc.id, ...doc.data() };
     });
