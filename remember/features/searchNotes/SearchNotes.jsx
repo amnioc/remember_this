@@ -11,6 +11,8 @@ import starterCategories2 from "../../helpers/holders";
 import { filterResults } from "./searchFuncs";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import db from "../../firebaseConfig copy";
+import AccordionItem from "../../components/accordian/accordian";
+import CategoryFilter from "../../components/filters/categoryFilter";
 
 const SearchNotes = ({ notes, setNotes }) => {
   const [filter, setFilter] = React.useState({
@@ -19,43 +21,35 @@ const SearchNotes = ({ notes, setNotes }) => {
     text: "",
   });
 
-  async function filterNotes(filter) {
-    var categories = filter.category;
-    console.log(categories);
-    const querySnapshot = await getDocs(
-      query(
-        collection(db, "notes"),
-        where("category", "array-contains-any", categories)
-      )
-    );
-    const filterNotes = [];
-    querySnapshot.forEach((doc) => {
-      filterNotes.push({ id: doc.id, ...doc.data() });
-      // console.log(doc.data());
-    });
-    console.log(filterNotes);
-    setNotes(filterNotes);
-  }
+  // async function filterNotes(filter) {
+  //   var categories = filter.category;
+  //   const querySnapshot = await getDocs(
+  //     query(
+  //       collection(db, "notes"),
+  //       where("category", "array-contains-any", categories)
+  //     )
+  //   );
+  //   const filteredNotes = [];
+  //   querySnapshot.forEach((doc) => {
+  //     filteredNotes.push({ id: doc.id, ...doc.data() });
+  //     // console.log(doc.data());
+  //   });
+  //   setNotes(filteredNotes);
+  // }
 
   return (
     <SafeAreaView style={styles.searchMenu}>
-      <Text>SEARCH NOTES BY:</Text>
-      <FlatList
-        data={starterCategories2}
-        renderItem={({ item }) => (
-          <Pressable
-            style={styles.categoryFilter}
-            onPress={() => {
-              setFilter(filterResults(filter, item));
-              // console.log(filter);
-              setNotes(filterNotes(filter));
-            }}
-          >
-            <Text style={styles.filterLabel}>{item.category}</Text>
-          </Pressable>
-        )}
-        keyExtractor={(item) => item.id}
+      <AccordionItem
+        title="search notes"
+        body={
+          <CategoryFilter
+            filter={filter}
+            setFilter={setFilter}
+            setNotes={setNotes}
+          />
+        }
       />
+      {/* <Text>SEARCH NOTES BY:</Text> */}
     </SafeAreaView>
   );
 };
@@ -80,3 +74,4 @@ const styles = StyleSheet.create({
   },
 });
 export default SearchNotes;
+// module.exports.filterNotes = filterNotes;
