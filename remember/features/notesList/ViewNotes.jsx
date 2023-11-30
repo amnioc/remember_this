@@ -1,6 +1,5 @@
-import { View, StyleSheet, FlatList, Text, ScrollView } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import NoteCards from "../noteCard/NoteCards";
-import DeleteNote from "../deleteNote/DeleteNote";
 
 const ViewNotes = ({ notes, setNotes }) => {
   return (

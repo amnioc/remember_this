@@ -20,18 +20,21 @@ const SearchNotes = ({ notes, setNotes }) => {
   });
 
   async function filterNotes(filter) {
-    console.log("here in filterNotes");
-    // const querySnapshot = await getDocs(
-    //   query(
-    //     collection(db, "notes"),
-    //     where("category", "array-contains", filter.category[0]),
-    //     orderBy("id", "desc")
-    //   )
-    // );
-    // const filteredNotes = querySnapshot.docs.map((doc) => {
-    //   return { id: doc.id, ...doc.data() };
-    // });
-    // return filteredNotes;
+    var categories = filter.category;
+    console.log(categories);
+    const querySnapshot = await getDocs(
+      query(
+        collection(db, "notes"),
+        where("category", "array-contains-any", categories)
+      )
+    );
+    const filterNotes = [];
+    querySnapshot.forEach((doc) => {
+      filterNotes.push({ id: doc.id, ...doc.data() });
+      // console.log(doc.data());
+    });
+    console.log(filterNotes);
+    setNotes(filterNotes);
   }
 
   return (
@@ -44,7 +47,8 @@ const SearchNotes = ({ notes, setNotes }) => {
             style={styles.categoryFilter}
             onPress={() => {
               setFilter(filterResults(filter, item));
-              setNotes(filterNotes(notes, filter));
+              // console.log(filter);
+              setNotes(filterNotes(filter));
             }}
           >
             <Text style={styles.filterLabel}>{item.category}</Text>
