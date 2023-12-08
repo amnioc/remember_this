@@ -4,8 +4,11 @@ import {
   filterNotes,
   filterResults,
 } from "../../features/searchNotes/searchFuncs";
+import { useState } from "react";
 
 const CategoryFilter = ({ filter, setFilter, setNotes }) => {
+  const [selected, setSelected] = useState(false);
+
   return (
     <FlatList
       data={starterCategories2}
@@ -14,7 +17,6 @@ const CategoryFilter = ({ filter, setFilter, setNotes }) => {
           style={styles.categoryFilter}
           onPress={() => {
             setFilter(filterResults(filter, item));
-            // console.log(filter);
             setNotes(filterNotes(filter, setNotes));
           }}
         >

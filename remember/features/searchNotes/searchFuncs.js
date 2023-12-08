@@ -4,6 +4,9 @@ import db from "../../firebaseConfig copy";
 export function filterResults(filter, item) {
   if (item && filter.category.includes(item.category) === false) {
     filter.category.push(item.category);
+  } else if (item && filter.category.includes(item.category)) {
+    const catLocation = filter.category.indexOf(item.category);
+    filter.category.splice(catLocation, 1);
   }
   return { ...filter };
 }
