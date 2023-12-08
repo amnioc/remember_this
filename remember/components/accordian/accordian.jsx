@@ -9,7 +9,7 @@ import {
   Button,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import SearchNotes from "../../features/searchNotes/SearchNotes";
+// import SearchNotes from "../../features/searchNotes/SearchNotes";
 
 function AccordionItem({ title, body }) {
   const [expanded, setExpanded] = useState(false);

@@ -3,8 +3,8 @@ import DeleteNote from "../deleteNote/DeleteNote";
 
 const NoteCards = ({ item, notes, setNotes }) => {
   return (
-    <View>
-      <Text style={styles.noteText}>The Note: {item.content}</Text>
+    <View style={styles.noteHolder}>
+      <Text style={styles.noteText}>{item.content}</Text>
       <Text style={styles.noteCategories}>
         Categories: {item.category.join(", ") || "-"}
       </Text>
@@ -15,19 +15,15 @@ const NoteCards = ({ item, notes, setNotes }) => {
 };
 
 const styles = StyleSheet.create({
-  noteCardContainer: {
-    flex: 0.2,
-    alignContent: "center",
-    backgroundColor: "light grey",
-    borderWidth: 10,
-    borderColor: "blue",
-    position: "relative",
-    flexDirection: "column",
-    justifyContent: "space-evenly",
+  noteHolder: {
+    borderColor: "grey",
+    borderWidth: 5,
+    padding: 5,
   },
   noteText: {
-    borderColor: "black",
+    color: "purple",
   },
   noteCategories: {},
+  noteDate: {},
 });
 export default NoteCards;
