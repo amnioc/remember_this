@@ -1,8 +1,8 @@
 import { filterResults } from "../searchFuncs";
 
 // should return original filter object when no item chosen
-describe("filterResults", () => {
-  it("should return a new unchanged filter object, in memory reference, when no filter item selected", () => {
+describe.only("filterResults", () => {
+  it("should return an empty filter when no filter item selected", () => {
     var testFilter = { category: [], date: 0, text: "" };
     const expected = { category: [], date: 0, text: "" };
     expect(filterResults(testFilter)).not.toBe(testFilter);
@@ -25,5 +25,21 @@ describe("filterResults", () => {
     const result = filterResults(testFilter, testItem);
     const finalResult = filterResults(testFilter, secondTestItem);
     expect(finalResult).toEqual(expected);
+  });
+
+  it("should remove category from filter category array", () => {
+    var testFilter = { category: ["Hobbies", "Holiday"], date: 0, text: "" };
+    const testItem = { id: 1, category: "Hobbies" };
+    const expected = { category: ["Holiday"], date: 0, text: "" };
+    const result = filterResults(testFilter, testItem);
+    expect(result).toEqual(expected);
+  });
+
+  it("returns empty array when category filter, length 1, is removed", () => {
+    var testFilter = { category: ["Hobbies"], date: 0, text: "" };
+    const testItem = { id: 1, category: "Hobbies" };
+    const expected = { category: [], date: 0, text: "" };
+    const result = filterResults(testFilter, testItem);
+    expect(result).toEqual(expected);
   });
 });

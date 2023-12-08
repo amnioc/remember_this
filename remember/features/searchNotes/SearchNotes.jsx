@@ -21,22 +21,6 @@ const SearchNotes = ({ notes, setNotes }) => {
     text: "",
   });
 
-  // async function filterNotes(filter) {
-  //   var categories = filter.category;
-  //   const querySnapshot = await getDocs(
-  //     query(
-  //       collection(db, "notes"),
-  //       where("category", "array-contains-any", categories)
-  //     )
-  //   );
-  //   const filteredNotes = [];
-  //   querySnapshot.forEach((doc) => {
-  //     filteredNotes.push({ id: doc.id, ...doc.data() });
-  //     // console.log(doc.data());
-  //   });
-  //   setNotes(filteredNotes);
-  // }
-
   return (
     <SafeAreaView style={styles.searchMenu}>
       <AccordionItem
