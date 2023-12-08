@@ -10,31 +10,23 @@ const ViewNotes = ({ notes, setNotes }) => {
           return <NoteCards item={item} notes={notes} setNotes={setNotes} />;
         }}
         keyExtractor={(item) => item.id}
+        style={styles.notesList}
       />
     </View>
   );
 };
 const styles = StyleSheet.create({
-  // allNotesList: {
-  //   position: "relative",
-  //   margin: 10,
-  //   padding: 10,
-  // },
   noteCardContainer: {
     flex: 1,
     alignContent: "center",
-    // backgroundColor: "light grey",
     borderWidth: 10,
     borderColor: "blue",
-    // position: "relative",
-    // flexDirection: "column",
-    // justifyContent: "space-evenly",
   },
-  noteText: {
-    color: "purple",
-    // borderColor: "black",
+  notesList: {
+    margin: 5,
+    borderWidth: 5,
+    borderColor: "pink",
   },
-  noteCategories: {},
 });
 
 export default ViewNotes;

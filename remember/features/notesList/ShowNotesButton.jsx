@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   showListButton: {
     position: "relative",
     padding: 20,
-    margin: 50,
+    margin: 25,
     alignItems: "center",
     backgroundColor: "aquamarine",
   },

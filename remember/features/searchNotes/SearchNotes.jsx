@@ -62,16 +62,16 @@ const styles = StyleSheet.create({
     padding: 20,
     width: "100%",
   },
-  categoryFilter: {
-    backgroundColor: "grey",
-    width: "25%",
-    padding: 10,
-    margin: 10,
-  },
-  filterLabel: {
-    color: "white",
-    textAlign: "center",
-  },
+  // categoryFilter: {
+  //   backgroundColor: "grey",
+  //   width: "25%",
+  //   padding: 10,
+  //   margin: 10,
+  // },
+  // filterLabel: {
+  //   color: "white",
+  //   textAlign: "center",
+  // },
 });
 export default SearchNotes;
 // module.exports.filterNotes = filterNotes;
