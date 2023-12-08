@@ -33,7 +33,6 @@ const SearchNotes = ({ notes, setNotes }) => {
           />
         }
       />
-      {/* <Text>SEARCH NOTES BY:</Text> */}
     </SafeAreaView>
   );
 };

@@ -4,10 +4,10 @@ import {
   filterNotes,
   filterResults,
 } from "../../features/searchNotes/searchFuncs";
-import { useState } from "react";
+// import { useState } from "react";
 
 const CategoryFilter = ({ filter, setFilter, setNotes }) => {
-  const [selected, setSelected] = useState(false);
+  // const [selected, setSelected] = useState(false);
 
   return (
     <FlatList

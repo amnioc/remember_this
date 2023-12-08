@@ -1,25 +1,30 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import db from "../../firebaseConfig copy.js";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React from "react";
 import ViewNotes from "./ViewNotes.jsx";
+import { getAllNotes } from "./getNotesFuncs.js";
 
 const ShowNotesButton = ({ notes, setNotes, setShowNotes, showNotes }) => {
-  async function getAllNotes() {
-    const querySnapshot = await getDocs(
-      query(collection(db, "notes"), orderBy("id", "desc"))
-    );
-    const allNotes = querySnapshot.docs.map((doc) => {
-      return { id: doc.id, ...doc.data() };
-    });
-    setNotes(allNotes);
+  // async function getAllNotes() {
+  //   const querySnapshot = await getDocs(
+  //     query(collection(db, "notes"), orderBy("id", "desc"))
+  //   );
+  //   const allNotes = querySnapshot.docs.map((doc) => {
+  //     return { id: doc.id, ...doc.data() };
+  //   });
+  //   setNotes(allNotes);
 
-    showNotes ? setShowNotes(false) : setShowNotes(true);
-  }
+  //   showNotes ? setShowNotes(false) : setShowNotes(true);
+  // }
 
   return (
     <View>
-      <Pressable onPress={getAllNotes} style={styles.showListButton}>
+      <Pressable
+        onPress={() => {
+          showNotes ? setShowNotes(false) : setShowNotes(true);
+          getAllNotes(setNotes);
+        }}
+        style={styles.showListButton}
+      >
         <Text styles={styles.buttonText}>
           {showNotes ? "Return To Home" : "Click For List"}
         </Text>
