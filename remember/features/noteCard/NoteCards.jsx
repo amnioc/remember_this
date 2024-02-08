@@ -1,4 +1,4 @@
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import DeleteNote from "../deleteNote/DeleteNote";
 
 const NoteCards = ({ item, notes, setNotes }) => {

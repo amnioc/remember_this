@@ -4,24 +4,13 @@ import ViewNotes from "./ViewNotes.jsx";
 import { getAllNotes } from "./getNotesFuncs.js";
 
 const ShowNotesButton = ({ notes, setNotes, setShowNotes, showNotes }) => {
-  // async function getAllNotes() {
-  //   const querySnapshot = await getDocs(
-  //     query(collection(db, "notes"), orderBy("id", "desc"))
-  //   );
-  //   const allNotes = querySnapshot.docs.map((doc) => {
-  //     return { id: doc.id, ...doc.data() };
-  //   });
-  //   setNotes(allNotes);
-
-  //   showNotes ? setShowNotes(false) : setShowNotes(true);
-  // }
 
   return (
     <View>
       <Pressable
         onPress={() => {
           showNotes ? setShowNotes(false) : setShowNotes(true);
-          getAllNotes(setNotes);
+          getAllNotes(setNotes)
         }}
         style={styles.showListButton}
       >

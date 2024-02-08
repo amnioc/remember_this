@@ -9,13 +9,14 @@ const NewNote = () => {
   const [categories, setCategories] = React.useState([]);
 
   async function writeNoteData(name, noteId, categories) {
-    const newNote = doc(db, "notes", noteId);
+    const newNote = doc(db, "notes", noteId); 
     const data = {
       id: noteId,
       content: name,
       category: categories,
       date: `${new Date()}`,
     };
+  
     await setDoc(newNote, data)
       .then(() => {
         console.log("new note in database");

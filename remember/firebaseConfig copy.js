@@ -1,10 +1,6 @@
 const { initializeApp, applicationDefault, cert } = require("firebase/app");
 const {
-  getFirestore,
-  Timestamp,
-  FieldValue,
-  Filter,
-  getDocs,
+  getFirestore
 } = require("firebase/firestore");
 
 const apiKEY = process.env.apiKey;
@@ -25,3 +21,5 @@ const firebaseApp = initializeApp({
 const db = getFirestore();
 
 export default db;
+
+

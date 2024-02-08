@@ -5,7 +5,6 @@ import React from "react";
 import { optimisticDelete } from "../../helpers/helperFuncs";
 
 const DeleteNote = ({ note, notes, setNotes }) => {
-  // const [thisNote, setThisNote] = React.useState("")
   async function deleteNote(note) {
     const thisNote = doc(db, "notes", note);
 

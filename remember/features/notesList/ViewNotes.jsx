@@ -7,6 +7,7 @@ const ViewNotes = ({ notes, setNotes }) => {
       <FlatList
         data={notes}
         renderItem={({ item }) => {
+
           return <NoteCards item={item} notes={notes} setNotes={setNotes} />;
         }}
         keyExtractor={(item) => item.id}

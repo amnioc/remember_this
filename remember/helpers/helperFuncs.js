@@ -10,3 +10,4 @@ export function optimisticDelete(notes, noteId) {
       })
     : `there was an error, no notes provided`;
 }
+
