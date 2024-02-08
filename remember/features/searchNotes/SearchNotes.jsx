@@ -1,16 +1,8 @@
 import React from "react";
 import {
-  View,
-  Text,
   SafeAreaView,
   StyleSheet,
-  Pressable,
-  FlatList,
 } from "react-native";
-import starterCategories2 from "../../helpers/holders";
-import { filterResults } from "./searchFuncs";
-import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
-import db from "../../firebaseConfig copy";
 import AccordionItem from "../../components/accordian/accordian";
 import CategoryFilter from "../../components/filters/categoryFilter";
 
@@ -44,17 +36,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
     padding: 20,
     width: "100%",
-  },
-  // categoryFilter: {
-  //   backgroundColor: "grey",
-  //   width: "25%",
-  //   padding: 10,
-  //   margin: 10,
-  // },
-  // filterLabel: {
-  //   color: "white",
-  //   textAlign: "center",
-  // },
+  }
 });
+
 export default SearchNotes;
-// module.exports.filterNotes = filterNotes;

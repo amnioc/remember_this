@@ -7,14 +7,13 @@ const HomePage = ({ notes, setNotes, showNotes, setShowNotes }) => {
   return (
     <View style={styles.homepage}>
       <Header />
-      <NewNote />
+      <NewNote  />
       <ShowNotesButton
         setShowNotes={setShowNotes}
         showNotes={showNotes}
         notes={notes}
         setNotes={setNotes}
       />
-
       <StatusBar style="auto" />
     </View>
   );

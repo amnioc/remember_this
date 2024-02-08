@@ -7,6 +7,6 @@ export async function getAllNotes(setNotes) {
   );
   const allNotes = querySnapshot.docs.map((doc) => {
     return { id: doc.id, ...doc.data() };
-  });
-  setNotes(allNotes);
+  })
+  return setNotes(allNotes)
 }
